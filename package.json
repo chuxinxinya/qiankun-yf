@@ -1,43 +1,36 @@
 {
   "name": "qiankun_yf",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.8.3",
-    "vue": "^3.2.13"
-  },
+  "version": "0.0.1",
+  "description": "qiankun demo",
+  "main": "index.js",
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "npm-run-all": "^4.1.5"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
+  "scripts": {
+    "install": "npm-run-all --serial install:*",
+    "install:main": "cd main && npm i",
+    "install:sub-vue": "cd sub-vue && npm i",
+    "install:sub-react": "cd sub-react && npm i",
+    "serve": "npm-run-all --parallel serve:*",
+    "serve:sub-react": "cd sub-react && npm run serve",
+    "serve:sub-vue": "cd sub-vue && npm run serve",
+    "serve:main": "cd main && npm run serve",
+    "build": "npm-run-all build:* && bash ./scripts/bundle.sh",
+    "build:sub-react": "cd sub-react && npm run build",
+    "build:sub-vue": "cd sub-vue && npm run build",
+    "build:main": "cd main && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "qiankun",
+    "qiankun_yf",
+    "demo"
+  ],
+  "author": "yangfang",
+  "license": "MIT"
 }
