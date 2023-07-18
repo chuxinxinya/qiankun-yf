@@ -1,6 +1,4 @@
 // vue.config.js
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { name } = require('../package.json')
 const path = require("path");
 
@@ -28,3 +26,4 @@ module.exports = {
     },
   },
 };
+ 

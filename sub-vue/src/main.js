@@ -37,9 +37,5 @@ export async function unmount() {
   /**
    * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载应用的应用实例
    */
-  console.log('instance', instance);
   instance.unmount()
-  // instance.$destroy()
-  // instance.$el.innerHTML = ''
-  // instance = null
 }
