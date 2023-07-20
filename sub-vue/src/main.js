@@ -1,6 +1,7 @@
 import './public-path'
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
 
 let instance = null
 
@@ -8,10 +9,11 @@ function render (props = {}) {
   const { container }  = props
   console.log('container', container);
   instance = createApp(App)
+  instance.use(router)
   instance.mount(container ? container.querySelector('#sub-vue-app') : '#sub-vue-app')
 }
 
-if (!window._POWERED_BY_QIANKUN_) {
+if (!window.__POWERED_BY_QIANKUN__) {
   console.log('独立运行');
   render()
 }

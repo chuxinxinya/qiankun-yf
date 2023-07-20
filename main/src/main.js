@@ -5,9 +5,18 @@ import microApps from './micro-app'
 import elementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import './assets/reset.css'
+import router from './router'
+import { useRoute } from './router/useRouter'
+import { createPinia } from 'pinia'
+import piniaPluginPersist from 'pinia-plugin-persist'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersist)
 const app = createApp(App)
-app.use(elementPlus)
+app.use(pinia).use(router).use(elementPlus)
+useRoute(router)
 app.mount('#app')
+
 
 registerMicroApps(microApps, {
   beforeLoad: app => {

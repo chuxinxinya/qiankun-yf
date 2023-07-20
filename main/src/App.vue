@@ -1,38 +1,18 @@
 <template>
-  <el-container>
-    <el-aside width="200px">
-      <el-menu
-        active-text-color="#ffd04b"
-        background-color="#545c64"
-        class="el-menu-vertical-demo"
-        default-active="0"
-        text-color="#fff"
-      >
-        <p class="title">管理后台</p>
-        <el-menu-item
-          v-for="(item, index) in microApps"
-          :key="index"
-          :index="index + ''"
-          @click="handleJump(item)"
-        >
-          <span>{{ item.name }}</span>
-        </el-menu-item>
-      </el-menu>
-    </el-aside>
-    <el-container>
-      <el-main>
-        <div id="sub-vue-viewport"></div>
-        <div id="sub-react-viewport"></div>
-      </el-main>
-    </el-container>
-  </el-container>
+  <div id="app">
+    <component :is="layoutComponent">
+      <router-view></router-view>
+    </component>
+  </div>
 </template>
 
 <script setup>
-import microApps from "./micro-app";
-const handleJump = (item) => {
-  history.pushState(null, item.activeRule, item.activeRule);
-};
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
+const layoutComponent = computed(() => {
+  return route.meta.layout || "defaultLayout";
+});
 </script>
 
 <style>
